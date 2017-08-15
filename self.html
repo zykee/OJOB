@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>self</title>
+    <link href="css/normalize.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+
+    <!-- Bootstrap -->
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+    <!--fontawesome-->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <!--animation-->
+    <link href="css/animate.min.css" rel="stylesheet">
+
+    <!--main css-->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!--responsive css-->
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!--search css-->
+    <link rel="stylesheet" href="css/search/search.css">
+
+    <!--jobs css-->
+    <link rel="stylesheet" href="css/jobs/jobs.css">
+
+    <!--注册登录css-->
+    <link rel="stylesheet" href="css/login/login-register.css">
+
+    <!--up to top-->
+    <link rel="stylesheet" href="css/uptotopfromcoco.css">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/self/self.css">
+    <link rel="stylesheet" href="layui-v1.0.9_rls/layui/css/layui.css">
+
+    <script type="text/javascript" src="layui-v1.0.9_rls/layui/layui.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            let show = document.getElementById("release_date");
+            setInterval(function() {
+                let time = new Date();
+                // 程序计时的月从0开始取值后+1
+                let m = time.getMonth() + 1;
+                let t = time.getFullYear() + "-" + m + "-"
+                    + time.getDate() + " " ;
+                let y = time.getFullYear();
+                show.innerHTML = t;
+            }, 1000);
+        };
+    </script>
+    <script>
+        layui.use('layedit', function(){
+            var layedit = layui.layedit
+                ,$ = layui.jquery;
+
+            //构建一个默认的编辑器
+            var index = layedit.build('LAY_demo1');
+
+            //编辑器外部操作
+            var active = {
+                content: function(){
+                    alert(layedit.getContent(index)); //获取编辑器内容
+                }
+                ,text: function(){
+                    alert(layedit.getText(index)); //获取编辑器纯文本内容
+                }
+                ,selection: function(){
+                    alert(layedit.getSelection(index));
+                }
+            };
+
+            $('.site-demo-layedit').on('click', function(){
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+
+            //自定义工具栏
+            layedit.build('LAY_demo2', {
+                tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
+                ,height: 100
+            })
+        });
+    </script>
+</head>
+<body>
+<header id="header_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo">
+                    <h2><a href="#" id="to-all-jobs">Personal Center</a></h2>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="mainmenu">
+                    <div class="navbar navbar-nobg">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Support</a></li>
+                                <li><a href="#contact" id="to-contact">Contact</a></li>
+                                <li><a class="exit" href="index.html">退出登录</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!--<header id="header_area" class="container">-->
+    <!--<div class="container">-->
+        <!--<div class="row">-->
+            <!--<div class="col-sm-8 col-md-8">-->
+                <!--<div class="logo">-->
+                    <!--<h2><a href="#" id="to-all-jobs">Personal Center</a></h2>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-sm-4 col-md-4">-->
+                <!--<a class="exit" href="index.html">退出登录</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</header>-->
+
+<!--个人中心管理，重点体现用户个人信息，用户发布的职位和发布职位功能-->
+<div class="container main">
+    <div class="row">
+        <div class="col-lg-3 left">
+            <div class="left-user">
+                <div class="head-portrait"><img src="images/1.jpg" alt=""></div>
+                <p id="p-username">
+                    <!--用户名 : <span>Deepspace</span>-->
+                </p>
+            </div>
+            <div>
+                <ul>
+                    <li class="active" href="#userMessage" data-toggle="tab">个人信息</li>
+                    <li href="#alreadyJobs" data-toggle="tab">已发布职位<span class="badge pull-right">42</span></li>
+                    <li href="#applyJobs" data-toggle="tab">发布职位</li>
+                    <li href="#changeMessage" data-toggle="tab">修改个人信息</li>
+                    <li href="#about" data-toggle="tab">关于</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-9 right">
+            <div id="myTabContent" class="tab-content">
+                <!--用户个人信息-->
+                <div id="userMessage"  class="tab-pane fade in active">
+                    <div class="user-name">
+                        <span>用户名</span>
+                        <!--<span>Deepspace</span>-->
+                    </div>
+                    <div class="user-email">
+                        <span>邮箱</span>
+                        <!--<span>cxin1427@qq.com</span>-->
+                    </div>
+                    <div class="user-field">
+                        <span>领域</span>
+                        <!--<span>15827390523</span>-->
+                    </div>
+                    <div class="user-address">
+                        <span>国家地区</span>
+                        <!--<span>中国</span>-->
+                    </div>
+                    <!--<div class="user-email">-->
+                        <!--<span></span>-->
+                        <!--<span>湖北</span>-->
+                    <!--</div>-->
+                    <div class="user-company">
+                        <span>公司</span>
+                        <!--<span>ThoughtWorks</span>-->
+                    </div>
+                    <a href="#changeMessage" data-toggle="tab">修改</a>
+                </div>
+                <!--已发布职位-->
+                <div id="alreadyJobs" class="tab-pane fade">
+                    <div class="row">
+                        <div id="myselfJob" class="col-lg-12 col-md-12 col-sm-12">
+                            <!--<div class="my-apply-jobs">-->
+                                <!--<p>-->
+                                    <!--<span class="apply-start-date">发布时间: <span>2017.8.8</span></span>-->
+                                    <!--<span class="apply-end-date">~ &nbsp;&nbsp;截止时间: <span>2017.9.8</span></span>-->
+                                <!--</p>-->
+                                <!--<p>-->
+                                    <!--<span class="apply-job-name">职位名称: <span>前端开发工程师</span></span>-->
+                                    <!--<span class="apply-job-company">公司: <span>ThoughtWorks</span></span>-->
+                                    <!--<span class="apply-job-address">地址: <span>湖北武汉</span></span>-->
+                                <!--</p>-->
+                                <!--<p class="apply-job-order">职位要求: H5/CSS3/JavaScript</p>-->
+                                <!--<p class="apply-job-delete"><a href="#">删除</a></p>-->
+                                <!--<p></p>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+                <!--发布职位-->
+                <div id="applyJobs" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="apply-jobs-now">
+                                <p>发布日期: <ipnut id="release_date" readOnly></ipnut></p>
+                                <p>截止时间: <input id="expiry_date" type="text"></p>
+                                <p>国家: <input id="country" type="text" value="中国"></p>
+                                <p>地区: <input id="city" type="text" value="武汉"></p>
+                                <p>type: <input id="newtype" type="text" value="designer"></p>
+                                <p>category: <input id="newcategory" type="text" value="contract"></p>
+                                <p>电话号码: <input id="apply" type="text" value="13979470453"></p>
+                                <p>tags: <input id="tags" type="text" value="五xianyijin"></p>
+                                <p>职位名称: <input id="position" type="text" value="五xianyijin"></p>
+                                <div>
+                                    <p>职位要求:</p>
+                                    <textarea id="description" style="display: block;">啊啊啊</textarea>
+                                    <div class="site-demo-button" style="margin-top: 20px;">
+                                        <button class="layui-btn site-demo-layedit" data-type="content">获取编辑器内容</button>
+                                        <button class="layui-btn site-demo-layedit" data-type="text">获取编辑器纯文本内容</button>
+                                        <button class="layui-btn site-demo-layedit" data-type="selection">获取编辑器选中内容</button>
+                                    </div>
+                                </div>
+                                <button class="layui-btn apply-yes">确定</button>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--修改个人信息-->
+                <div id="changeMessage" class="tab-pane fade">
+                    <div class="change-user-name">
+                        <span>用户名</span>
+                        <!--<input type="text" placeholder="Deepspace">-->
+                    </div>
+                    <div class="change-user-email">
+                        <span>邮箱</span>
+                        <!--<span>cxin1427@qq.com</span>-->
+                    </div>
+                    <div class="change-user-field">
+                        <span>领域</span>
+                        <!--<input type="text" placeholder="15827390523">-->
+                    </div>
+                    <div class="change-user-address">
+                        <span>国家地区</span>
+                        <!--<input type="text" placeholder="中国">-->
+                    </div>
+                    <div class="change-user-company">
+                        <span>公司</span>
+                        <!--<input type="text" placeholder="ThoughtWorks">-->
+                    </div>
+                    <a href="#userMessage" data-toggle="tab" id="update-submit">提交</a>
+                </div>
+                <!--关于-->
+                <div id="about" class="tab-pane fade">我是关于</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/self/self.js"></script>
+<script type="text/javascript" src="js/ll-9-alterAccountInfo.js"></script>
+<script type="text/javascript" src="js/sendAJob.js"></script>
+<script type="text/javascript" src="js/ll-delete-userInfo.js"></script>
+</body>
+</html>

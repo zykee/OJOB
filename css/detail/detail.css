@@ -1,0 +1,41 @@
+#detail-header{
+    /*margin-bottom: 50px;*/
+    padding: 15px;
+}
+.main{
+    margin-bottom: 5%;
+    /*background-color: #8b8b8b;*/
+}
+.login .btn-login, .registerBox .btn-register{
+    background-color: #209b60;
+}
+.logo{
+    color: #209B60 !important;
+    font-size: 20px !important;
+    cursor: pointer;
+}
+#log-in{
+    color: #209B60;
+}
+.main-left{
+    background-color: #dddddd;
+    padding: 0 0 5% 4%;
+}
+.main-right{
+    background-color: #8bf7ff;
+}
+.detail-jobs-order{
+    padding-top: 10%;
+}
+.job-brief-top{
+    padding-bottom: 7%;
+    background-color: #fff;
+}
+.detail-conpany{
+    background-color: #209b60;
+    padding: 20px 0;
+    font-size: 18px;
+}
+.deadline{
+    padding-top: 4%;
+}
